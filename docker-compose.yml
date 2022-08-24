@@ -25,9 +25,19 @@ services:
         depends_on:
             - mysql
             - redis
+            - queue
             - meilisearch
             - mailhog
             - selenium
+    queue:
+        image: sail-8.1/app:latest
+        command: ['/bin/sh', '-c', 'php artisan queue:work']
+        volumes:
+            - '.:/var/www/html'
+        depends_on:
+            - redis
+        networks:
+            - sail
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
