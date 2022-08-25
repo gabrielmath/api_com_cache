@@ -20,6 +20,8 @@ namespace App\Models{
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Module[] $modules
+ * @property-read int|null $modules_count
  * @method static \Illuminate\Database\Eloquent\Builder|Course newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Course newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Course query()
@@ -31,6 +33,60 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereUuid($value)
  */
 	class Course extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Lesson
+ *
+ * @property int $id
+ * @property int $module_id
+ * @property string $uuid
+ * @property string $name
+ * @property string $video
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Module $module
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereVideo($value)
+ */
+	class Lesson extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Module
+ *
+ * @property int $id
+ * @property int $course_id
+ * @property string $uuid
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Course $course
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Lesson[] $lessons
+ * @property-read int|null $lessons_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Module newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Module newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Module query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereCourseId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereUuid($value)
+ */
+	class Module extends \Eloquent {}
 }
 
 namespace App\Models{
